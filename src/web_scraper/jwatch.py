@@ -7,6 +7,8 @@ sys.path.append(str(root_dir))
 from web_scraper.configure import ChromeConnection
 from web_scraper.login import Login
 
+from web_scraper.change_date import DateChanger
+
 
 class JWatchScraper:
     def __init__(self, start_url, desired_dates):
@@ -18,6 +20,10 @@ class JWatchScraper:
         # connect and log in
         self.connect()
         self.login()
+
+        # set date range
+        self.driver.get(self.start_url)
+        DateChanger(self.driver).change_date(self.desired_dates)
 
     def connect(self):
         self.driver = ChromeConnection().driver
