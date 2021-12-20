@@ -1,1 +1,6 @@
 *.pyc
+*dist*
+*build*
+*DS_Store*
+*.docx
+*.spec
