@@ -155,8 +155,3 @@ class DocumentGenerator:
         cell_properties.append(
             cell_shading
         )  # finally extend cell props with shading element
-
-
-with open("example_paper.json") as f:
-    data = json.load(f)
-    DocumentGenerator().create_document(data)
