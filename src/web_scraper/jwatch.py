@@ -8,6 +8,7 @@ from web_scraper.configure import ChromeConnection
 from web_scraper.login import Login
 
 from web_scraper.change_date import DateChanger
+from web_scraper.extract_links import LinkExtractor
 
 
 class JWatchScraper:
@@ -24,6 +25,9 @@ class JWatchScraper:
         # set date range
         self.driver.get(self.start_url)
         DateChanger(self.driver).change_date(self.desired_dates)
+
+        # extract all article links
+        self.article_links = LinkExtractor(self.driver).get_links()
 
     def connect(self):
         self.driver = ChromeConnection().driver
