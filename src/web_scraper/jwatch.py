@@ -5,6 +5,7 @@ root_dir = (Path(__file__).parent / "../").resolve()
 sys.path.append(str(root_dir))
 
 from web_scraper.configure import ChromeConnection
+from web_scraper.login import Login
 
 
 class JWatchScraper:
@@ -16,8 +17,11 @@ class JWatchScraper:
     def scrape(self):
         # connect and log in
         self.connect()
+        self.login()
 
     def connect(self):
         self.driver = ChromeConnection().driver
         self.driver.get(self.start_url)
 
+    def login(self):
+        Login(self.driver).login()
