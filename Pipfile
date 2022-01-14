@@ -8,18 +8,21 @@ selenium = "*"
 webdriver-manager = "*"
 python-docx = "*"
 validators = "*"
-pyinstaller = "*"
 
 [dev-packages]
 pytest = "*"
+pytest-mock = "*"
 mypy = "*"
 black = "*"
+pyinstaller = "*"
 
 [requires]
 python_version = "3.8"
 
-[scripts]
-scrape = "python src/main.py"
-
 [pipenv]
 allow_prereleases = true
+
+[scripts]
+scrape = "python src/main.py"
+lint = "python -m mypy . --ignore-missing-imports"
+test = "pytest -vv"
